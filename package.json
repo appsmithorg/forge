@@ -5,6 +5,8 @@
     "rollup": "^2.79.1"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "readme.generate": "node readme.generate.js",
+    "update": "npm run build & npm run readme.generate"
   }
 }

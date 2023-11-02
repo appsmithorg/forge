@@ -138,8 +138,7 @@ export default {
     },
 
     /**
-     * @function cleanCommentBlock
-     * Cleans a JSDoc comment block by removing the commenting marks from each line.
+     * @function cleanCommentBlock Cleans a JSDoc comment block by removing the commenting marks from each line.
      * @param {string} commentBlock - The JSDoc comment block to clean.
      * @returns {string} The cleaned comment block.
      */
@@ -165,15 +164,4 @@ export default {
         }
         return response.text();
     },
-
-    /**
-     * A test function to demonstrate the parsing of JSDoc comments from a remote JavaScript file.
-     * @function test
-     * @returns {Promise<object>} An object containing the parsed JSDoc comments from the test file.
-     * @async
-     */
-    async test() {
-        let code = 'https://gist.githubusercontent.com/rlnorthcutt/ef8c95a0dbd886c1b470c60650265a1b/raw/59c243197a34bc2d21825fd3c0ee781e358e333a/test.js';
-        return await this.parseFromUrl(code);
-    }
 };
