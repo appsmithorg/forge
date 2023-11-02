@@ -25,6 +25,7 @@ Here are the libraries available in this repo and how to use them. All of them a
 
 This is a simple library that uses basic JSDoc style docblocks to comment your code and generate docs. We are actually using it in this repo to automatically generate a README for each library. It doesn't offer full JSDoc support, but the basics are good.
 - [documentation](https://github.com/appsmithorg/forge/tree/main/libraries/jsDocLite)
+- [commenting guidelines](https://github.com/appsmithorg/forge/tree/main/libraries/jsDocLite/COMMENTING.md)
 - usage:
 
     ```sh

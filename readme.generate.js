@@ -42,9 +42,11 @@ function generateReadmeContent(parsedDocs, lib) {
   // Methods
   if (parsedDocs.functions && Object.keys(parsedDocs.functions).length > 0) {
     content += `## Methods\n\n`;
+    let row = 0;
 
     for (const [funcName, func] of Object.entries(parsedDocs.functions)) {
-      content += `### ${lib}.${funcName}()\n\n`;
+      row += 1;
+      content += `${row}. ### ${lib}.${funcName}()\n\n`;
       content += `${func.description}\n\n`;
 
       // Async
@@ -77,6 +79,7 @@ function generateReadmeContent(parsedDocs, lib) {
         });
         content += '\n';
       }
+      content += `\n\n`;
     }
   }
 
