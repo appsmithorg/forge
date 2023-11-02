@@ -1,17 +1,13 @@
-import multiEntry from '@rollup/plugin-multi-entry';
 import resolve from '@rollup/plugin-node-resolve';
-import terser from '@rollup/plugin-terser';
+import terser from '@rollup/plugin-terser'; // Ensure you're importing terser correctly
 import path from 'path';
 import fs from 'fs';
 
-// Dynamically generate the input configuration for Rollup
-const libraryFolders = fs.readdirSync('libraries').filter(function (file) {
+// Dynamically generate the Rollup configuration for each library
+const libraryFolders = fs.readdirSync('libraries').filter(file => {
   return fs.statSync(path.join('libraries', file)).isDirectory();
 });
 
-const inputConfig = libraryFolders.map(folder => `libraries/${folder}/index.js`);
-
-// Generate output configuration for each library
 const outputConfig = libraryFolders.map(folder => ({
   input: `libraries/${folder}/index.js`,
   output: {
@@ -23,13 +19,11 @@ const outputConfig = libraryFolders.map(folder => ({
     }
   },
   plugins: [
-    multiEntry(),
     resolve(),
-    terser(),
+    terser(), // Use the terser plugin
   ],
-  // Add external dependencies here if needed
   external: [
-    // 'react', 'vue', 'angular', etc.
+    // Add external dependencies here if needed
   ]
 }));
 
