@@ -29,14 +29,16 @@ This is a very simple system and really only expects a single module to define t
 ## Functions
 Functions can be noted with 3 optional tags - any of the three will work:
 - `@function` - expects a name and description
-- `@method`
-- `@func`
+    - _alternative: `@method` or `@func`_
 
 Functions can have a few different tags to describe them. Each tag is slightly different:
 - `@params`- expects a type, name, and description
-- `@returns` - expects a type, name, and description
+    - _alternative: `@param`, `@arg`, or `@argument`_
+- `@returns` - expects a type and description
+    - _alternative: `@return` or `@ret`_
 - `@async` - this is a boolean tag to mark this as an async function
 - `@link` - an optional URL to docs or some other information
+    - _alternative: `@doc`_
 
 All tags are optional, but should be used if needed.
 
@@ -56,6 +58,7 @@ _NOTE: any functions without a `function/func/method` tag will not be listed at 
 ## Constants
 Constants are quite typically variables declared in the library and are notated with:
 - `@constant` - expects a type, name, and description
+    - _alternative: `@const`_
 
 **example**
 ```js

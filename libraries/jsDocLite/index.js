@@ -20,7 +20,7 @@ export default {
      */
     tagRegex: {
         'params': /@(param|arg|argument)\s+{([\s\S]*?)}\s+([a-zA-Z_$][0-9a-zA-Z_$]*)\s*-([\s\S]*?)(?=@|$)/g,
-        'returns': /@(returns?|return)\s+{([\s\S]*?)}\s*-([\s\S]*?)(?=@|$)/g,
+        'returns': /@(returns|return|ret)\s+{([\s\S]*?)}\s+([a-zA-Z_$][0-9a-zA-Z_$]*)\s*-([\s\S]*?)(?=@|$)/g,
         'async': /@async/g,
         'example': /@example\s+([\s\S]*?)(?=@|$)/g,
         'link': /@(link|doc)\s+([\s\S]*?)(?=@|$)/g
@@ -117,22 +117,46 @@ export default {
         const details = { entryType, entryName, description, ...(entryDataType ? { dataType: entryDataType } : {}) };
 
         // Check the rest of the comment for the tags to output.
+        // Check the rest of the comment for the tags to output.
         for (const [tag, regex] of Object.entries(this.tagRegex)) {
             const matches = [...comment.matchAll(regex)];
-            if (matches.length) {
-                if (matches[0].length === 2) {
+            if (!matches.length) continue;
+
+            switch (tag) {
+                case 'params':
+                    // 'params' expects type, name, and description
+                    details[tag] = matches.map(match => ({
+                        type: match[2]?.trim(),
+                        name: match[3]?.trim(),
+                        description: match[4]?.trim()
+                    }));
+                    break;
+
+                case 'returns':
+                    // 'returns' expects type and description, no name
+                    details[tag] = matches.map(match => ({
+                        type: match[2]?.trim(),
+                        description: match[3]?.trim()
+                    }));
+                    break;
+
+                case 'async':
+                    // 'async' is a boolean flag, if the tag is present, the function is async
+                    details[tag] = true;
+                    break;
+
+                case 'link':
+                    // 'link' expects a URL, which is the first capturing group in the regex
                     details[tag] = matches[0][1].trim();
-                } else {
-                    details[tag] = matches.map(match => {
-                        return {
-                            type: match[2]?.trim(),
-                            name: match[3]?.trim(),
-                            description: match[4]?.trim()
-                        };
-                    });
-                }
+                    break;
+
+                default:
+                    // Any other tags that may be added in the future
+                    details[tag] = matches.map(match => match[1]?.trim());
+                    break;
             }
         }
+
 
         return details;
     },
