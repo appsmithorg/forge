@@ -10,7 +10,7 @@ export default {
      */
     entryRegex: {
         'function': /@(function|func|method)\s+([a-zA-Z_$][0-9a-zA-Z_$]*)/gm,
-        'constant': /@(const|constant)\s+{(\w+)}\s+([a-zA-Z_$][0-9a-zA-Z_$]*)/gm,
+        'constant': /@(const|constant|property)\s+{(\w+)}\s+([a-zA-Z_$][0-9a-zA-Z_$]*)/gm,
         'module': /@(module|class)\s+([a-zA-Z_$][0-9a-zA-Z_$]*)/gm
     },
 
@@ -23,7 +23,7 @@ export default {
         'returns': /@(returns?|return)\s+{([\s\S]*?)}\s*-([\s\S]*?)(?=@|$)/g,
         'async': /@async/g,
         'example': /@example\s+([\s\S]*?)(?=@|$)/g,
-        'link': /@(link|doc)\s+([\s\S]*?)(?=@|$)/g
+        'see': /@(see|link|doc)\s+([\s\S]*?)(?=@|$)/g
     },
 
     /**
