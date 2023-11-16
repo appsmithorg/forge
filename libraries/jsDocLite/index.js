@@ -11,7 +11,7 @@ export default {
     entryRegex: {
         'function': /@(function|func|method)\s+([a-zA-Z_$][0-9a-zA-Z_$]*)/gm,
         'constant': /@(const|constant)\s+{(\w+)}\s+([a-zA-Z_$][0-9a-zA-Z_$]*)/gm,
-        'module': /@module\s+([a-zA-Z_$][0-9a-zA-Z_$]*)/gm
+        'module': /@(module|class)\s+([a-zA-Z_$][0-9a-zA-Z_$]*)/gm
     },
 
     /**
