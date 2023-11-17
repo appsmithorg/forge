@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const jsDocLite = require('./dist/jsDocLite.umd.js'); // Adjust the path as necessary
+const jsDocLite = require('../dist/jsDocLite.umd.js'); // Adjust the path as necessary
 
 const librariesPath = './libraries';
 const jsDeliverPrefix = 'https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/';
@@ -16,6 +16,7 @@ fs.readdirSync(librariesPath).forEach(lib => {
   }
 });
 
+// @todo Replace with an actual template (using mustache?)
 function generateReadmeContent(parsedDocs, lib) {
   let content = `# ${lib}\n\n`;
 
@@ -27,7 +28,6 @@ function generateReadmeContent(parsedDocs, lib) {
   // Modules (if any)
   if (parsedDocs.modules && Object.keys(parsedDocs.modules).length > 0) {
     for (const [moduleName, module] of Object.entries(parsedDocs.modules)) {
-      //content += `### ${moduleName}\n\n`;
       content += `${module.description}\n\n`;
     }
   }
@@ -42,21 +42,21 @@ function generateReadmeContent(parsedDocs, lib) {
   // Methods
   if (parsedDocs.functions && Object.keys(parsedDocs.functions).length > 0) {
     content += `## Methods\n\n`;
-    let row = 0;
 
     for (const [funcName, func] of Object.entries(parsedDocs.functions)) {
-      row += 1;
-      content += `${row}. ### ${lib}.${funcName}()\n\n`;
-      content += `${func.description}\n\n`;
-
-      // Async
-      if (func.async) {
-        content += `- async\n\n`;
+      let params = '';
+      if (func.params && func.params.length > 0) {
+        func.params.forEach(param => {
+          params = params + param.name + ',';
+        });
+        params = params.slice(0, -1);
       }
+      content += `### ${lib}.${funcName}(${params})\n\n`;
+      content += `${func.description}\n\n`;
 
       // Parameters
       if (func.params && func.params.length > 0) {
-        content += `- parameters\n`;
+        content += `- *parameters*\n`;
         func.params.forEach(param => {
           content += `  - \`${param.name}\`: ${param.description} \n`;
         });
@@ -65,13 +65,13 @@ function generateReadmeContent(parsedDocs, lib) {
 
       // Returns
       if (func.returns) {
-        content += `- returns\n\n`;
+        content += `- *returns*\n\n`;
         content += `  - \`${func.returns.type}\`: ${func.returns.description}\n\n`;
       }
 
       // Examples
       if (func.examples && func.examples.length > 0) {
-        content += `- examples\n`;
+        content += `- *examples*\n`;
         func.examples.forEach(example => {
           content += '```js\n';
           content += `${example}\n`;
@@ -79,6 +79,12 @@ function generateReadmeContent(parsedDocs, lib) {
         });
         content += '\n';
       }
+
+      // Async
+      if (func.async) {
+        content += `- *async*\n\n`;
+      }
+
       content += `\n\n`;
     }
   }

@@ -11,52 +11,52 @@ https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/jsDocLite.umd.js
 
 ## Methods
 
-1. ### jsDocLite.parseFromUrl()
+### jsDocLite.parseFromUrl(url)
 
 Asynchronously fetches JavaScript content from a URL and parses the JSDoc comments.
 
-- async
-
-- parameters
+- *parameters*
   - `url`: The URL to fetch the JavaScript content from. 
 
+- *async*
 
 
-2. ### jsDocLite.parse()
+
+### jsDocLite.parse(code)
 
 Parses the provided JavaScript code to extract JSDoc comments.
 
-- parameters
+- *parameters*
   - `code`: The JavaScript code to parse. 
 
 
 
-3. ### jsDocLite.parseComment()
+### jsDocLite.parseComment(comment)
 
 Parses a single JSDoc comment block to extract information.
 
-- parameters
+- *parameters*
   - `comment`: The JSDoc comment block to parse. 
 
 
 
-4. ### jsDocLite.cleanCommentBlock()
+### jsDocLite.cleanCommentBlock(commentBlock)
 
 @function cleanCommentBlock Cleans a JSDoc comment block by removing the commenting marks from each line.
 
-- parameters
+- *parameters*
   - `commentBlock`: The JSDoc comment block to clean. 
 
 
 
-5. ### jsDocLite.fetchJsContent()
+### jsDocLite.fetchJsContent(url)
 
 Asynchronously fetches JavaScript content from a URL.
 
-- async
-
-- parameters
+- *parameters*
   - `url`: The URL to fetch the JavaScript content from. 
+
+- *async*
 
 
 

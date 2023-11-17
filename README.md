@@ -17,6 +17,25 @@ git clone git@github.com:appsmithorg/forge.git
 ```
 Alternatively, you can follow the tutorial to set your own forge up from scratch. (coming soon)
 
+## Repo management
+Each library should be added to its own folder in the `libraries` directory as a single `index.js` file. This is intended to support simple libraries that are contained in a single file with few or no dependencies. The default expectation is that you can directly cut/paste an Appsmith JSObject into your `index.js`.
+
+The repo used `@rollup` to process your code into a UDM file, and expects to use JSDelivr for CDN delivery. 
+
+### Scripts
+- **build** - runs both the UMD & the readme file generation commands. In essence, it is the same as running `umd.generate` & `readme.generate`. This is the default command to update your repo when you add or update a library.
+```js
+npm run build
+```
+- **readme.generate** - used to generate a readme file for each library. It uses the `jsDocLite` library in this repo to parse the JSDoc comments out of the library `index.js` file. It will iterate over each library and save the README to that directory.
+```js
+npm run readme.generate
+```
+- **umd.generate** - used to generate the UMD code versions in the `dist` directory. This will iterate over every folder in the `libraries` directory and use the `index.js` in each one. The name of the folder will be the name of the library.
+```js
+npm run umd
+```
+
 ## Libraries availble
 
 Here are the libraries available in this repo and how to use them. All of them are availble using JSDelivr so you can import them into your Appsmith app.
@@ -33,20 +52,6 @@ This is a simple library that uses basic JSDoc style docblocks to comment your c
     ```
 
 -----
-## Repo management
-Each library should be added to its own folder in the `libraries` directory as a single `index.js` file. This is intended to support simple libraries that are contained in a single file with few or no dependencies. The default expectation is that you can directly cut/paste an Appsmith JSObject into your `index.js`.
-
-The repo used `@rollup` to process your code into a UDM file, and expects to use JSDelivr for CDN delivery. 
-
-### Scripts
-- **build** - used to generate the UMD code versions in the `dist` directory. This will iterate over every folder in the `libraries` directory and use the `index.js` in each one. The name of the folder will be the name of the library.
-```js
-npm run build
-```
-- **readme.generate** - used to generate a readme file for each library. It uses the `jsDocLite` library in this repo to parse the JSDoc comments out of the library `index.js` file. It will iterate over each library and save the README to that directory.
-```js
-npm run readme.generate
-```
 
 ### Dev dependencies
 - npm
