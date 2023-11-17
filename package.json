@@ -7,6 +7,6 @@
   "scripts": {
     "umd.generate": "rollup --config tools/rollup.config.js",
     "readme.generate": "node tools/readme.generate.js",
-    "build": "npm run umd.generate & npm run readme.generate"
+    "build": "npm run umd.generate && npm run readme.generate"
   }
 }

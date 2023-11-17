@@ -13,6 +13,7 @@ fs.readdirSync(librariesPath).forEach(lib => {
     const readmeContent = generateReadmeContent(parsedDocs, lib);
     const readmePath = path.join(librariesPath, lib, 'README.md');
     fs.writeFileSync(readmePath, readmeContent);
+    console.log("Writing " + readmePath);
   }
 });
 
@@ -64,9 +65,9 @@ function generateReadmeContent(parsedDocs, lib) {
       }
 
       // Returns
-      if (func.returns) {
+      if (func.returns && func.returns.length > 0) {
         content += `- *returns*\n\n`;
-        content += `  - \`${func.returns.type}\`: ${func.returns.description}\n\n`;
+        content += `  - \`${func.returns[0].type}\`: ${func.returns[0].description}\n\n`;
       }
 
       // Examples

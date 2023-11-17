@@ -18,6 +18,10 @@ Asynchronously fetches JavaScript content from a URL and parses the JSDoc commen
 - *parameters*
   - `url`: The URL to fetch the JavaScript content from. 
 
+- *returns*
+
+  - `Promise<object>`: An object containing the parsed JSDoc comments.
+
 - *async*
 
 
@@ -29,6 +33,10 @@ Parses the provided JavaScript code to extract JSDoc comments.
 - *parameters*
   - `code`: The JavaScript code to parse. 
 
+- *returns*
+
+  - `object`: An object containing the parsed JSDoc comments.
+
 
 
 ### jsDocLite.parseComment(comment)
@@ -37,6 +45,10 @@ Parses a single JSDoc comment block to extract information.
 
 - *parameters*
   - `comment`: The JSDoc comment block to parse. 
+
+- *returns*
+
+  - `object|null`: An object containing the parsed information from the JSDoc comment, or null if no recognized entry tag is found.
 
 
 
@@ -47,6 +59,10 @@ Parses a single JSDoc comment block to extract information.
 - *parameters*
   - `commentBlock`: The JSDoc comment block to clean. 
 
+- *returns*
+
+  - `string`: The cleaned comment block.
+
 
 
 ### jsDocLite.fetchJsContent(url)
@@ -55,6 +71,10 @@ Asynchronously fetches JavaScript content from a URL.
 
 - *parameters*
   - `url`: The URL to fetch the JavaScript content from. 
+
+- *returns*
+
+  - `Promise<string>`: A promise that resolves with the fetched JavaScript content as text.
 
 - *async*
 

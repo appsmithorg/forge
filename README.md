@@ -85,7 +85,6 @@ Partly because JSDoc is a bit overkill for our use case, and partly because we w
 - jsDocLite
   - Allow it to work with multiple comment lines
   - add @todo
-- Improve readme generation to add parameters to methods
 - Make readme generator easier to use with a template
 
 ## Contributing
