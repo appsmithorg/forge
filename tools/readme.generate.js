@@ -60,9 +60,11 @@ function generateReadmeContent(parsedDocs, lib) {
         });
         params = params.slice(0, -1);
       }
-      // Method list & heading
+      // Method list & links
       headingTag = lib + funcName + params.replace(/,/g, "");
       content += `- [${funcName}](#${headingTag.toLowerCase()}) \n`;
+      // Method heading and section
+      methodContent += '-----\n';
       methodContent += `### ${lib}.${funcName}(${params})\n\n`;
       methodContent += `${func.description}\n\n`;
 

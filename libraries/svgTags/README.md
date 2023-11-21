@@ -18,6 +18,7 @@ https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/svgTags.umd.js
 - [nameToInitialsSVG](#svgtagsnametoinitialssvgstr) 
 - [selectOptions](#svgtagsselectoptionsdatalabelvalue) 
 - [objToRows](#svgtagsobjtorowsobj) 
+-----
 ### svgTags.stringToNum(inputString,modSize)
 
 @method stringToNum Convert a string into a repeatable numeric value in a range from 0 to modSize.
@@ -32,6 +33,7 @@ https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/svgTags.umd.js
 
 
 
+-----
 ### svgTags.listToTags(inputString)
 
 @method listToTags Create colored tags based on the input string of comma separated values.
@@ -45,6 +47,7 @@ https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/svgTags.umd.js
 
 
 
+-----
 ### svgTags.nameToInitialsSVG(str)
 
 @method nameToInitialsSVG Create an SVG representation of colored initials from the input string and return it as a Data URI.
@@ -58,6 +61,7 @@ https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/svgTags.umd.js
 
 
 
+-----
 ### svgTags.selectOptions(data,label,value)
 
 @method selectOptions Generates array of {label, value} objects sorted by label & with unique values, for use in Select or List widgets. 
@@ -74,6 +78,7 @@ https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/svgTags.umd.js
 
 
 
+-----
 ### svgTags.objToRows(obj)
 
 @method objToRows Converts a single object to an array of {property, value} objects, 
