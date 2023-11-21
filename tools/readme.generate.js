@@ -26,6 +26,12 @@ function generateReadmeContent(parsedDocs, lib) {
     content += `${parsedDocs.description}\n\n`;
   }
 
+  // Check for an image file and include it if it exists
+  const imagePath = path.join(librariesPath, lib, 'image.png'); // Assuming the image is a PNG
+  if (fs.existsSync(imagePath)) {
+    content += `![${lib} image](image.png)\n\n`;
+  }
+
   // Modules (if any)
   if (parsedDocs.modules && Object.keys(parsedDocs.modules).length > 0) {
     for (const [moduleName, module] of Object.entries(parsedDocs.modules)) {

@@ -1,5 +1,7 @@
 # jsDocLite
 
+![jsDocLite image](image.png)
+
 This module provides functionality to parse JSDoc comments from JavaScript code.
 
 ## Usage

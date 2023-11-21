@@ -1,5 +1,7 @@
 # svgTags
 
+![svgTags image](image.png)
+
 @module svgTags Provides methods to generate SVG based tags for content and object.
 
 ## Usage
