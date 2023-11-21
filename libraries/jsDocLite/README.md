@@ -13,6 +13,11 @@ https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/jsDocLite.umd.js
 
 ## Methods
 
+- [parseFromUrl](#jsdocliteparsefromurlurl) 
+- [parse](#jsdocliteparsecode) 
+- [parseComment](#jsdocliteparsecommentcomment) 
+- [cleanCommentBlock](#jsdoclitecleancommentblockcommentblock) 
+- [fetchJsContent](#jsdoclitefetchjscontenturl) 
 ### jsDocLite.parseFromUrl(url)
 
 Asynchronously fetches JavaScript content from a URL and parses the JSDoc comments.

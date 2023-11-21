@@ -49,6 +49,8 @@ function generateReadmeContent(parsedDocs, lib) {
   // Methods
   if (parsedDocs.functions && Object.keys(parsedDocs.functions).length > 0) {
     content += `## Methods\n\n`;
+    let methodContent = '';
+    let headingTag = '';
 
     for (const [funcName, func] of Object.entries(parsedDocs.functions)) {
       let params = '';
@@ -58,42 +60,47 @@ function generateReadmeContent(parsedDocs, lib) {
         });
         params = params.slice(0, -1);
       }
-      content += `### ${lib}.${funcName}(${params})\n\n`;
-      content += `${func.description}\n\n`;
+      // Method list & heading
+      headingTag = lib + funcName + params.replace(/,/g, "");
+      content += `- [${funcName}](#${headingTag.toLowerCase()}) \n`;
+      methodContent += `### ${lib}.${funcName}(${params})\n\n`;
+      methodContent += `${func.description}\n\n`;
 
       // Parameters
       if (func.params && func.params.length > 0) {
-        content += `- *parameters*\n`;
+        methodContent += `- *parameters*\n`;
         func.params.forEach(param => {
-          content += `  - \`${param.name}\`: ${param.description} \n`;
+          methodContent += `  - \`${param.name}\`: ${param.description} \n`;
         });
-        content += '\n';
+        methodContent += '\n';
       }
 
       // Returns
       if (func.returns && func.returns.length > 0) {
-        content += `- *returns*\n\n`;
-        content += `  - \`${func.returns[0].type}\`: ${func.returns[0].description}\n\n`;
+        methodContent += `- *returns*\n\n`;
+        methodContent += `  - \`${func.returns[0].type}\`: ${func.returns[0].description}\n\n`;
       }
 
       // Examples
       if (func.examples && func.examples.length > 0) {
-        content += `- *examples*\n`;
+        methodContent += `- *examples*\n`;
         func.examples.forEach(example => {
-          content += '```js\n';
-          content += `${example}\n`;
-          content += '```\n';
+          methodContent += '```js\n';
+          methodContent += `${example}\n`;
+          methodContent += '```\n';
         });
-        content += '\n';
+        methodContent += '\n';
       }
 
       // Async
       if (func.async) {
-        content += `- *async*\n\n`;
+        methodContent += `- *async*\n\n`;
       }
 
-      content += `\n\n`;
+      methodContent += `\n\n`;
     }
+
+    content += methodContent;
   }
 
   // Constants

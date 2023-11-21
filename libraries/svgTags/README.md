@@ -13,6 +13,11 @@ https://cdn.jsdelivr.net/gh/appsmithorg/forge@main/dist/svgTags.umd.js
 
 ## Methods
 
+- [stringToNum](#svgtagsstringtonuminputstringmodsize) 
+- [listToTags](#svgtagslisttotagsinputstring) 
+- [nameToInitialsSVG](#svgtagsnametoinitialssvgstr) 
+- [selectOptions](#svgtagsselectoptionsdatalabelvalue) 
+- [objToRows](#svgtagsobjtorowsobj) 
 ### svgTags.stringToNum(inputString,modSize)
 
 @method stringToNum Convert a string into a repeatable numeric value in a range from 0 to modSize.
